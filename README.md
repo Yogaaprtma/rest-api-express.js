@@ -98,6 +98,9 @@ Once the server is running, you can access the interactive API documentation (Sw
 - [x] **Validation** & Error Handling
 - [x] **Pagination** & Filtering (Ready to implement in Repo layer)
 - [x] **Swagger** Documentation
+- [x] **Winston** Logging
+- [x] **Security** Best Practices (Helmet, CORS)
+- [] **Rate Limiting** (Planned for future)
 
 ## 👤 Author
 

@@ -102,6 +102,8 @@ paths:
                   type: number
                 stock:
                   type: integer
+                description:
+                  type: string
       responses:
         200:
           description: Update berhasil
