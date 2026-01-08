@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+  title: Rest API Expert - Yoga
+  version: 1.0.0
+  description: API CRUD Produk dengan JWT Authentication
+servers:
+  - url: http://localhost:3000/api/v1
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - bearerAuth: []
+paths:
+  /auth/token:
+    post:
+      summary: Get Access Token
+      security: []
+      parameters:
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+          required: true
+        - in: header
+          name: x-api-secret
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: Token success
+  /products:
+    get:
+      summary: Get All Products
+      responses:
+        200:
+          description: List Products
+    post:
+      summary: Create Product
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                price:
+                  type: number
+                stock:
+                  type: integer
+                description:
+                  type: string
+      responses:
+        201:
+          description: Created
+  /products/{id}:
+    get:
+      summary: Get Product By ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Found
+    delete:
+      summary: Delete Product
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Deleted
