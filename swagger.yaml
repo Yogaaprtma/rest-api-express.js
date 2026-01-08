@@ -1,23 +1,28 @@
 openapi: 3.0.0
 info:
   title: Rest API - Yoga (Express JS)
+  description: API untuk manajemen produk dengan Authentication.
   version: 1.0.0
-  description: API CRUD Produk dengan JWT Authentication
 servers:
   - url: http://localhost:3000/api/v1
+    description: Local Server
+
 components:
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
+
 security:
   - bearerAuth: []
+
 paths:
   /auth/token:
     post:
-      summary: Get Access Token
-      security: []
+      summary: Mendapatkan Access Token (JWT)
+      description: Masukkan API Key dan Secret Key di Header.
+      security: [] # Public endpoint
       parameters:
         - in: header
           name: x-api-key
@@ -31,16 +36,20 @@ paths:
           required: true
       responses:
         200:
-          description: Token success
+          description: Berhasil mendapatkan token
+        401:
+          description: Credential salah
+
   /products:
     get:
-      summary: Get All Products
+      summary: Mengambil semua data produk
       responses:
         200:
-          description: List Products
+          description: List produk
     post:
-      summary: Create Product
+      summary: Membuat produk baru
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -56,10 +65,11 @@ paths:
                   type: string
       responses:
         201:
-          description: Created
+          description: Produk berhasil dibuat
+
   /products/{id}:
     get:
-      summary: Get Product By ID
+      summary: Detail produk berdasarkan ID
       parameters:
         - in: path
           name: id
@@ -68,9 +78,35 @@ paths:
             type: integer
       responses:
         200:
-          description: Found
+          description: Detail produk
+        404:
+          description: Produk tidak ditemukan
+    put:
+      summary: Update produk
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                price:
+                  type: number
+                stock:
+                  type: integer
+      responses:
+        200:
+          description: Update berhasil
     delete:
-      summary: Delete Product
+      summary: Hapus produk
       parameters:
         - in: path
           name: id
@@ -79,4 +115,4 @@ paths:
             type: integer
       responses:
         200:
-          description: Deleted
+          description: Hapus berhasil
