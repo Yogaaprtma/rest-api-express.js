@@ -11,7 +11,7 @@ A robust and production-ready RESTful API built with Node.js, Express, and Prism
 - **Authentication:** JSON Web Token (JWT)
 - **Documentation:** Swagger UI
 - **Logging:** Winston
-- **Security:** Helmet & CORS
+- **Security:** Helmet, CORS, & Rate Limiting
 
 ## 📂 Project Structure (Clean Architecture)
 ```text
@@ -29,6 +29,7 @@ src/
 ├── routes/             # API route definitions
 │
 └── utils/              # Shared utilities (response helpers, custom errors)
+```
 
 ## 🛠️ Installation & Setup
 
@@ -100,7 +101,7 @@ Once the server is running, you can access the interactive API documentation (Sw
 - [x] **Swagger** Documentation
 - [x] **Winston** Logging
 - [x] **Security** Best Practices (Helmet, CORS)
-- [] **Rate Limiting** (Planned for future)
+- [ ] **Rate Limiting** (Planned for future)
 
 ## 👤 Author
 
