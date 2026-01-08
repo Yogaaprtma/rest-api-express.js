@@ -14,6 +14,7 @@ A robust and production-ready RESTful API built with Node.js, Express, and Prism
 - **Security:** Helmet & CORS
 
 ## 📂 Project Structure (Clean Architecture)
+```text
 src/
 ├── app.js              # Application configuration (middlewares, routes)
 ├── server.js           # Server entry point
