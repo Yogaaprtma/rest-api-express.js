@@ -45,21 +45,31 @@ src/
     ```
 
 3.  **Environment Variables**
-    Create a `.env` file in the root directory and configure your credentials:
+    Create a `.env` file in the root directory. You can copy from `.env.example` and configure your credentials:
+
+    ```bash
+    cp .env.example .env
+    ```
+
+    Inside `.env`, fill in your own configuration:
     ```env
     # Database Config
-    DATABASE_URL="mysql://root:@localhost:3306/db_api_expert"
+    DATABASE_URL="mysql://USER:PASSWORD@HOST:PORT/DATABASE_NAME"
 
     # Server Config
     PORT=3000
     NODE_ENV=development
 
     # Security Keys
-    JWT_SECRET="your_super_secret_jwt_key"
+    JWT_SECRET="your_random_secret_string_here"
 
     # Client API Keys (For Token Generation)
-    API_CLIENT_KEY="optima-client-id"
-    API_CLIENT_SECRET="optima-secret-key-2026"
+    API_CLIENT_KEY="define_your_client_key"
+    API_CLIENT_SECRET="define_your_client_secret"
+
+    # Rate Limiting
+    RATE_LIMIT_WINDOW=60000
+    RATE_LIMIT_MAX=100
     ```
 
 4.  **Database Migration**
@@ -101,7 +111,7 @@ Once the server is running, you can access the interactive API documentation (Sw
 - [x] **Swagger** Documentation
 - [x] **Winston** Logging
 - [x] **Security** Best Practices (Helmet, CORS)
-- [ ] **Rate Limiting** (Planned for future)
+- [x] **Rate Limiting** (Planned for future)
 
 ## 👤 Author
 
