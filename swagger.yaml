@@ -39,6 +39,8 @@ paths:
           description: Berhasil mendapatkan token
         401:
           description: Credential salah
+        429:
+          description: Terlalu banyak request (Rate Limit)
 
   /products:
     get:

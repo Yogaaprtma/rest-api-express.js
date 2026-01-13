@@ -6,6 +6,8 @@ const YAML = require('yamljs');
 const path = require('path');
 const routes = require('./routes');
 const notFoundHandler = require('./middlewares/notfound.middleware');
+const errorHandler = require('./middlewares/error.middleware');
+const rateLimiter = require('./middlewares/rateLimit.middleware');
 
 const app = express();
 
@@ -13,6 +15,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(helmet());
+
+// Apply Rate Limiter ke semua request
+app.use(rateLimiter);
 
 // Dokumentasi Swagger
 const swaggerDocument = YAML.load(path.join(__dirname, '../swagger.yaml'));
@@ -23,5 +28,8 @@ app.use('/api/v1', routes);
 
 // 404 Handler (jika route tidak ditemukan)
 app.use(notFoundHandler);
+
+// 500 Handler (Error Global)
+app.use(errorHandler);
 
 module.exports = app;
