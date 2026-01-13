@@ -94,8 +94,8 @@ Once the server is running, you can access the interactive API documentation (Sw
 1.  **Get Access Token:**
     - Endpoint: `POST /api/v1/auth/token`
     - Headers:
-        - `x-api-key`: `optima-client-id`
-        - `x-api-secret`: `optima-secret-key-2026`
+        - `x-api-key`: `define_your_client_key`
+        - `x-api-secret`: `define_your_client_secret`
     - Response: You will receive a `token`.
 
 2.  **Access Protected Routes:**
