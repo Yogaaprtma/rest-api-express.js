@@ -111,7 +111,8 @@ Once the server is running, you can access the interactive API documentation (Sw
 - [x] **Swagger** Documentation
 - [x] **Winston** Logging
 - [x] **Security** Best Practices (Helmet, CORS)
-- [x] **Rate Limiting** (Planned for future)
+- [x] **Rate Limiting** (Hard limit for DDoS/Brute Force protection)
+- [x] **Traffic Throttling** (Progressive delays for API stability)
 
 ## 👤 Author
 
