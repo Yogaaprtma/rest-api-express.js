@@ -17,9 +17,17 @@ components:
 security:
   - bearerAuth: []
 
+tag:
+  - name: Auth
+    description: Endpoint untuk autentikasi
+  - name: Products
+    description: Endpoint manajemen produk
+
 paths:
   /auth/token:
     post:
+      tags:
+        - Auth
       summary: Mendapatkan Access Token (JWT)
       description: Masukkan API Key dan Secret Key di Header.
       security: [] # Public endpoint
@@ -44,11 +52,15 @@ paths:
 
   /products:
     get:
+      tags:
+        - Products
       summary: Mengambil semua data produk
       responses:
         200:
           description: List produk
     post:
+      tags:
+        - Products
       summary: Membuat produk baru
       requestBody:
         required: true
@@ -71,6 +83,8 @@ paths:
 
   /products/{id}:
     get:
+      tags:
+        - Products
       summary: Detail produk berdasarkan ID
       parameters:
         - in: path
@@ -84,6 +98,8 @@ paths:
         404:
           description: Produk tidak ditemukan
     put:
+      tags:
+        - Products
       summary: Update produk
       parameters:
         - in: path
@@ -110,6 +126,8 @@ paths:
         200:
           description: Update berhasil
     delete:
+      tags:
+        - Products
       summary: Hapus produk
       parameters:
         - in: path

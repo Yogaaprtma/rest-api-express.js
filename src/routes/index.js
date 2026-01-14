@@ -3,6 +3,7 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const { successResponse, errorResponse } = require('../utils/response');
 const productRoutes = require('./product.routes');
+const env = require('../config/env');
 
 // AUTH ENDPOINT (Generate Token)
 router.post('/auth/token', (req, res) => {
@@ -10,9 +11,15 @@ router.post('/auth/token', (req, res) => {
     const apiSecret = req.headers['x-api-secret'];
 
     // Cek kredensial sesuai .env
-    if (apiKey === process.env.API_CLIENT_KEY && apiSecret === process.env.API_CLIENT_SECRET) {
-        // Buat token (valid 1 jam)
-        const token = jwt.sign({ app: 'optima-app' }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    if (apiKey === env.clientKey && apiSecret === env.clientSecret) {
+
+        // Buat token menggunakan expired dari config
+        const token = jwt.sign(
+            { app: 'optima-app' }, 
+            env.jwtSecret, 
+            { expiresIn: env.jwtExpiresIn }
+        );
+        
         return successResponse(res, 200, 'Token Generated', { token });
     }
 

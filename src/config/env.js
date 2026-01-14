@@ -10,6 +10,7 @@ module.exports = {
 
     // Security
     jwtSecret: process.env.JWT_SECRET,
+    jwtExpiresIn: process.env.JWT_EXPIRES_IN || '1h',
     clientKey: process.env.API_CLIENT_KEY,
     clientSecret: process.env.API_CLIENT_SECRET,
 
