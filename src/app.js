@@ -8,6 +8,7 @@ const routes = require('./routes');
 const notFoundHandler = require('./middlewares/notfound.middleware');
 const errorHandler = require('./middlewares/error.middleware');
 const rateLimiter = require('./middlewares/rateLimit.middleware');
+const throttler = require('./middlewares/throttle.middleware');
 
 const app = express();
 
@@ -18,6 +19,9 @@ app.use(helmet());
 
 // Apply Rate Limiter ke semua request
 app.use(rateLimiter);
+
+// Throttler
+app.use(throttler);
 
 // Dokumentasi Swagger
 const swaggerDocument = YAML.load(path.join(__dirname, '../swagger.yaml'));

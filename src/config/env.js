@@ -13,7 +13,12 @@ module.exports = {
     clientKey: process.env.API_CLIENT_KEY,
     clientSecret: process.env.API_CLIENT_SECRET,
 
-    // Rate Limit Config
-    rateLimitWindow: 15 * 60 * 1000,
-    rateLimitMax: 100
+    // Rate Limit Config (Hard Limit - Blokir total)
+    rateLimitWindow: 15 * 60 * 1000, // 15 menit
+    rateLimitMax: 100, // Stop di request ke-100
+
+    // Throttle Config (Soft Limit - Mulai melambat)
+    throttleWindow: 15 * 60 * 1000, // 15 menit
+    throttleDelayAfter: 50, // Mulai melambat setelah request ke-50
+    throttleDelayMs: 500 // Tambah delay 500ms per request berlebih
 };
